@@ -63,11 +63,11 @@ cd enterprise-sales-intelligence
 4. Run `cd dbt && dbt run` to execute Silver and Gold models
 5. Open `dashboard/` for the Power BI file or run `streamlit run dashboard/app.py`
 
-## Project documents
-- [Business Requirements Document](docs/BRD.md)
-- [Data Catalog](docs/Data%catalog.md)
-- [KPI Definitions](docs/kpi%definitions.md)
-- [Naming Conventions](docs/Naming_conventions.md)
+## Project Documents
+- [Business Requirements Document](./docs/BRD.md)
+- [Data Catalog](./docs/Data%20catalog.md)
+- [KPI Definitions](./docs/kpi%20definitions.md)
+- [Naming Conventions](./docs/Naming_conventions.md)
 
 ## Tech stack
 `SQL Server` `dbt` `Great Expectations` `Python` `Power BI` `GitHub Actions` `DrawIO`
