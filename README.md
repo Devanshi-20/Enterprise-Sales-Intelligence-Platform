@@ -65,8 +65,8 @@ cd enterprise-sales-intelligence
 
 ## Project documents
 - [Business Requirements Document](docs/BRD.md)
-- [Data Catalog](docs/Data catalog.md)
-- [KPI Definitions](docs/kpi definitions.md)
+- [Data Catalog](docs/Data%catalog.md)
+- [KPI Definitions](docs/kpi%definitions.md)
 - [Naming Conventions](docs/Naming_conventions.md)
 
 ## Tech stack
