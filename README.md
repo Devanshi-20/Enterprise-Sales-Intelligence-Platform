@@ -66,8 +66,8 @@ cd enterprise-sales-intelligence
 ## Project documents
 - [Business Requirements Document](docs/BRD.md)
 - [Data Catalog](docs/Data catalog.md)
-- [KPI Definitions](docs/kpi_definitions.md)
-- [Naming Conventions](docs/naming_conventions.md)
+- [KPI Definitions](docs/kpi definitions.md)
+- [Naming Conventions](docs/Naming_conventions.md)
 
 ## Tech stack
 `SQL Server` `dbt` `Great Expectations` `Python` `Power BI` `GitHub Actions` `DrawIO`
