@@ -23,4 +23,4 @@ that enables data-driven decisions across Sales and Finance teams.
 - Dashboard answers all 8 analytical use cases without SQL
 - Full setup reproducible from README in under 60 minutes
 
-> Full BRD: [BRD_Enterprise_Sales_Intelligence_Platform.docx](BRD_Enterprise_Sales_Intelligence_Platform.docx)
+> Full BRD: [BRD_Enterprise_Sales_Intelligence_Platform.docx](BRD_Enterprise_Sales_Intelligence_Platform%v1.1.docx)
