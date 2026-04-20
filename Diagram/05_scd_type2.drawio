@@ -1,0 +1,64 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="SCD Type 2" id="scd2">
+    <mxGraphModel dx="1576" dy="868" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;fontStyle=1;fontColor=#1F3864;" value="SCD Type 2 Logic — dim_customer Update Flow" vertex="1">
+          <mxGeometry height="40" width="769" x="200" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="sub" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=11;fontStyle=2;fontColor=#666666;" value="Tracks historical changes to: city · province · segment · assigned_rep_id" vertex="1">
+          <mxGeometry height="25" width="769" x="200" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="start" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;fontColor=#0C447C;" value="Pipeline runs&#xa;Silver data ready" vertex="1">
+          <mxGeometry height="60" width="160" x="480" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="q1" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;fontColor=#7d4e00;" value="Does customer_id&#xa;exist in dim_customer?" vertex="1">
+          <mxGeometry height="80" width="230" x="445" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="insert_new" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontColor=#1E7145;" value="INSERT new row&#xa;&#xa;• is_current = 1&#xa;• effective_date = today&#xa;• expiry_date = NULL&#xa;• All attributes from Silver" vertex="1">
+          <mxGeometry height="110" width="200" x="140" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="q2" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;fontColor=#7d4e00;" value="Has any tracked column&#xa;changed?&#xa;(city, province, segment,&#xa;assigned_rep_id)" vertex="1">
+          <mxGeometry height="100" width="230" x="445" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="no_change" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;" value="No action needed&#xa;&#xa;Existing current record&#xa;remains unchanged" vertex="1">
+          <mxGeometry height="80" width="200" x="770" y="375" as="geometry" />
+        </mxCell>
+        <mxCell id="close_old" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;fontColor=#c0392b;" value="STEP 1 — Close old record&#xa;&#xa;UPDATE dim_customer&#xa;SET expiry_date = today&#xa;    is_current = 0&#xa;WHERE customer_id = X&#xa;  AND is_current = 1" vertex="1">
+          <mxGeometry height="130" width="220" x="350" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="insert_ver" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontColor=#1E7145;" value="STEP 2 — Insert new version&#xa;&#xa;INSERT INTO dim_customer&#xa;(customer_id, ...,&#xa; effective_date = today,&#xa; expiry_date = NULL,&#xa; is_current = 1)" vertex="1">
+          <mxGeometry height="130" width="220" x="590" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="result_box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffff88;strokeColor=#36393d;fontSize=11;fontStyle=1;" value="Result in dim_customer:&#xa;&#xa;Row 1: city=Toronto  is_current=0  expiry=today&#xa;Row 2: city=Vancouver  is_current=1  expiry=NULL&#xa;&#xa;Historical data preserved for all prior reporting" vertex="1">
+          <mxGeometry height="90" width="600" x="280" y="720" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" edge="1" parent="1" source="start" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#6c8ebf;strokeWidth=2;" target="q1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" edge="1" parent="1" source="q1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#1E7145;strokeWidth=2;" target="insert_new" value="NO — new customer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" edge="1" parent="1" source="q1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#d6b656;strokeWidth=2;" target="q2" value="YES — existing">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a4" edge="1" parent="1" source="q2" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#666666;strokeWidth=2;" target="no_change" value="NO">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a5" edge="1" parent="1" source="q2" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#b85450;strokeWidth=2;" target="close_old" value="YES — change detected">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a6" edge="1" parent="1" source="close_old" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#82b366;strokeWidth=2;" target="insert_ver">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a7" edge="1" parent="1" source="insert_ver" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#36393d;strokeWidth=2;" target="result_box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a8" edge="1" parent="1" source="close_old" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#36393d;strokeWidth=2;" target="result_box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
