@@ -1,0 +1,109 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="ETL Pipeline and CI-CD" id="etl_cicd">
+    <mxGraphModel dx="1261" dy="694" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;fontStyle=1;fontColor=#1F3864;" value="ETL Pipeline + CI/CD — Enterprise Sales Intelligence Platform" vertex="1">
+          <mxGeometry height="40" width="969" x="100" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="etl_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=13;fontStyle=1;fontColor=#0C447C;" value="ETL PIPELINE — Daily Run" vertex="1">
+          <mxGeometry height="25" width="300" x="60" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontColor=#0C447C;" value="1. Extract&#xa;Read CSV files&#xa;from ERP + CRM" vertex="1">
+          <mxGeometry height="70" width="140" x="60" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d6b656;fontSize=11;fontColor=#7d4e00;" value="2. Load Bronze&#xa;Truncate + insert&#xa;Log to load_log" vertex="1">
+          <mxGeometry height="70" width="140" x="240" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d6b656;fontSize=11;fontColor=#7d4e00;" value="3. Profile&#xa;ydata-profiling&#xa;report generated" vertex="1">
+          <mxGeometry height="70" width="140" x="420" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;" value="4. dbt run&#xa;Silver models&#xa;built + tested" vertex="1">
+          <mxGeometry height="70" width="140" x="600" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontColor=#7d4e00;" value="5. GE Checkpoint&#xa;Run DQ test suites&#xa;Log results" vertex="1">
+          <mxGeometry height="70" width="140" x="780" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="ge_pass" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontColor=#1E7145;" value="PASS&#xa;(DQ &gt;= 98%)" vertex="1">
+          <mxGeometry height="80" width="190" x="755" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="ge_fail" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;fontColor=#c0392b;" value="FAIL — Alert raised&#xa;Gold NOT refreshed&#xa;DQ log updated" vertex="1">
+          <mxGeometry height="60" width="160" x="990" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffff88;strokeColor=#36393d;fontSize=11;fontStyle=1;" value="6. Load Gold&#xa;fact_sales + dims&#xa;KPI views refresh" vertex="1">
+          <mxGeometry height="70" width="140" x="550" y="245" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontColor=#1E7145;" value="7. Dashboard ready&#xa;Streamlit auto-refreshes&#xa;from Gold views" vertex="1">
+          <mxGeometry height="70" width="140" x="370" y="245" as="geometry" />
+        </mxCell>
+        <mxCell id="cicd_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=13;fontStyle=1;fontColor=#4a1a6e;" value="CI/CD PIPELINE — Triggered on Pull Request to main" vertex="1">
+          <mxGeometry height="25" width="500" x="60" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;fontColor=#4a1a6e;" value="Developer pushes&#xa;to feature branch" vertex="1">
+          <mxGeometry height="60" width="150" x="60" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;fontColor=#4a1a6e;" value="Opens PR to main" vertex="1">
+          <mxGeometry height="60" width="150" x="250" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;fontColor=#4a1a6e;" value="GitHub Actions&#xa;triggered automatically" vertex="1">
+          <mxGeometry height="60" width="150" x="440" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;fontColor=#4a1a6e;" value="dbt compile&#xa;validates all models&#xa;and schema.yml" vertex="1">
+          <mxGeometry height="60" width="150" x="630" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="ci_pass" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontColor=#1E7145;" value="ALL TESTS PASS" vertex="1">
+          <mxGeometry height="70" width="160" x="625" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="ci_fail" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;fontColor=#c0392b;" value="TESTS FAIL&#xa;PR blocked&#xa;Dev notified" vertex="1">
+          <mxGeometry height="55" width="150" x="840" y="577.5" as="geometry" />
+        </mxCell>
+        <mxCell id="c5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontColor=#1E7145;" value="PR merged to main&#xa;Green checkmark shown" vertex="1">
+          <mxGeometry height="55" width="150" x="410" y="577.5" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" edge="1" parent="1" source="e1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#6c8ebf;strokeWidth=2;" target="e2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" edge="1" parent="1" source="e2" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#d6b656;strokeWidth=2;" target="e3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" edge="1" parent="1" source="e3" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#666666;strokeWidth=2;" target="e4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a4" edge="1" parent="1" source="e4" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#d6b656;strokeWidth=2;" target="e5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a5" edge="1" parent="1" source="e5" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#d6b656;strokeWidth=2;" target="ge_pass">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a6" edge="1" parent="1" source="ge_pass" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#b85450;strokeWidth=2;" target="ge_fail" value="FAIL">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a7" edge="1" parent="1" source="ge_pass" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#82b366;strokeWidth=2;" target="e6" value="PASS">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a8" edge="1" parent="1" source="e6" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#82b366;strokeWidth=2;" target="e7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b1" edge="1" parent="1" source="c1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#9673a6;strokeWidth=2;" target="c2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b2" edge="1" parent="1" source="c2" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#9673a6;strokeWidth=2;" target="c3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b3" edge="1" parent="1" source="c3" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#9673a6;strokeWidth=2;" target="c4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b4" edge="1" parent="1" source="c4" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#9673a6;strokeWidth=2;" target="ci_pass">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b5" edge="1" parent="1" source="ci_pass" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#b85450;strokeWidth=2;" target="ci_fail" value="FAIL">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b6" edge="1" parent="1" source="ci_pass" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#82b366;strokeWidth=2;" target="c5" value="PASS">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
