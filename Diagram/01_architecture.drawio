@@ -1,0 +1,138 @@
+<mxfile host="app.diagrams.net" version="21.0.0">
+  <diagram name="Architecture" id="architecture">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- TITLE -->
+        <mxCell id="title" value="Enterprise Sales Intelligence Platform — Architecture" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#1F3864;" vertex="1" parent="1">
+          <mxGeometry x="200" y="20" width="769" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- SOURCE SYSTEMS CONTAINER -->
+        <mxCell id="src_container" value="Source Systems" style="swimlane;startSize=30;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1;fontColor=#1F3864;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="80" width="320" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="erp" value="ERP System&#xa;(erp_orders, erp_products, erp_order_items)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontColor=#1F3864;" vertex="1" parent="src_container">
+          <mxGeometry x="10" y="40" width="140" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="crm" value="CRM System&#xa;(crm_customers, crm_contacts)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontColor=#1F3864;" vertex="1" parent="src_container">
+          <mxGeometry x="170" y="40" width="140" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- BRONZE LAYER -->
+        <mxCell id="bronze_container" value="Bronze Layer — Raw Ingestion" style="swimlane;startSize=30;fillColor=#ffe6cc;strokeColor=#d6b656;fontSize=13;fontStyle=1;fontColor=#7d4e00;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="260" width="320" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="bronze_erp" value="bronze.erp_orders&#xa;bronze.erp_order_items&#xa;bronze.erp_products" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d6b656;fontSize=10;fontColor=#7d4e00;" vertex="1" parent="bronze_container">
+          <mxGeometry x="10" y="40" width="140" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="bronze_crm" value="bronze.crm_customers&#xa;bronze.crm_contacts&#xa;bronze.load_log" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d6b656;fontSize=10;fontColor=#7d4e00;" vertex="1" parent="bronze_container">
+          <mxGeometry x="170" y="40" width="140" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- SILVER LAYER -->
+        <mxCell id="silver_container" value="Silver Layer — Cleansed &amp; Tested" style="swimlane;startSize=30;fillColor=#f5f5f5;strokeColor=#666666;fontSize=13;fontStyle=1;fontColor=#333333;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="460" width="320" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="silver_dbt" value="dbt Models&#xa;stg_erp_orders&#xa;stg_erp_products&#xa;stg_crm_customer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;" vertex="1" parent="silver_container">
+          <mxGeometry x="10" y="40" width="140" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="silver_ge" value="Great Expectations&#xa;DQ Test Suites&#xa;&#xa;silver.dq_run_log" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;" vertex="1" parent="silver_container">
+          <mxGeometry x="170" y="40" width="140" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- GOLD LAYER -->
+        <mxCell id="gold_container" value="Gold Layer — Star Schema" style="swimlane;startSize=30;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;fontStyle=1;fontColor=#7d4e00;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="260" width="380" height="360" as="geometry"/>
+        </mxCell>
+        <mxCell id="fact" value="fact_sales&#xa;(grain: order line item)&#xa;order_qty, unit_price&#xa;order_amount, refund_amount&#xa;cogs, gross_margin" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffff88;strokeColor=#36393d;fontSize=10;fontStyle=1;" vertex="1" parent="gold_container">
+          <mxGeometry x="120" y="130" width="150" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="dim_cust" value="dim_customer&#xa;SCD Type 2&#xa;effective_date&#xa;expiry_date, is_current" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="gold_container">
+          <mxGeometry x="10" y="40" width="120" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="dim_prod" value="dim_product&#xa;SCD Type 2&#xa;category, cost_price&#xa;list_price, is_active" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="gold_container">
+          <mxGeometry x="250" y="40" width="120" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="dim_date" value="dim_date&#xa;2020–2030&#xa;fiscal_quarter&#xa;Canadian holidays" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="gold_container">
+          <mxGeometry x="10" y="250" width="120" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="dim_loc" value="dim_location&#xa;Region&#xa;Province → City" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="gold_container">
+          <mxGeometry x="250" y="250" width="120" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="kpi_views" value="KPI Views&#xa;vw_kpi_revenue&#xa;vw_kpi_customer&#xa;vw_kpi_product&#xa;vw_dq_summary" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="gold_container">
+          <mxGeometry x="120" y="260" width="150" height="90" as="geometry"/>
+        </mxCell>
+
+        <!-- CONSUMPTION LAYER -->
+        <mxCell id="dash" value="Streamlit Dashboard&#xa;Revenue · Customer · Product · DQ Health" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;fontColor=#1E7145;" vertex="1" parent="1">
+          <mxGeometry x="480" y="680" width="230" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="reports" value="SQL Analytical Reports&#xa;8 reports covering all BRD use cases" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontColor=#1E7145;" vertex="1" parent="1">
+          <mxGeometry x="730" y="680" width="200" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- TOOLS SIDEBAR -->
+        <mxCell id="tools" value="Tools Used" style="swimlane;startSize=30;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;fontColor=#4a1a6e;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="960" y="80" width="160" height="300" as="geometry"/>
+        </mxCell>
+        <mxCell id="t1" value="SQL Server + SSMS" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="tools">
+          <mxGeometry x="10" y="40" width="140" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="t2" value="dbt Core" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="tools">
+          <mxGeometry x="10" y="70" width="140" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="t3" value="Great Expectations" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="tools">
+          <mxGeometry x="10" y="100" width="140" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="t4" value="Python + ydata-profiling" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="tools">
+          <mxGeometry x="10" y="130" width="140" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="t5" value="Streamlit" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="tools">
+          <mxGeometry x="10" y="160" width="140" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="t6" value="GitHub Actions (CI/CD)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="tools">
+          <mxGeometry x="10" y="190" width="140" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="t7" value="DrawIO (diagrams)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="tools">
+          <mxGeometry x="10" y="220" width="140" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="t8" value="GitHub Projects (backlog)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="tools">
+          <mxGeometry x="10" y="250" width="140" height="25" as="geometry"/>
+        </mxCell>
+
+        <!-- ARROWS source → bronze -->
+        <mxCell id="a1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#6c8ebf;strokeWidth=2;" edge="1" source="src_container" target="bronze_container" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- bronze → silver -->
+        <mxCell id="a2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#666666;strokeWidth=2;" edge="1" source="bronze_container" target="silver_container" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- silver → gold -->
+        <mxCell id="a3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#d6b656;strokeWidth=2;" edge="1" source="silver_container" target="gold_container" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- gold → dashboard -->
+        <mxCell id="a4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#82b366;strokeWidth=2;" edge="1" source="gold_container" target="dash" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- gold → reports -->
+        <mxCell id="a5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#82b366;strokeWidth=2;" edge="1" source="gold_container" target="reports" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- MEDALLION LABEL -->
+        <mxCell id="med_label" value="Medallion Architecture" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=12;fontStyle=3;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="80" y="790" width="200" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="credit" value="Enterprise Sales Intelligence Platform · github.com/Devanshi-20" style="text;html=1;strokeColor=none;fillColor=none;align=right;fontSize=10;fontColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="700" y="790" width="420" height="25" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
