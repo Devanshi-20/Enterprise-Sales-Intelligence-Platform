@@ -1,0 +1,141 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="ERD" id="erd">
+    <mxGraphModel dx="1484" dy="816" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;fontStyle=1;fontColor=#1F3864;" value="Entity Relationship Diagram — Gold Layer" vertex="1">
+          <mxGeometry height="40" width="769" x="200" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="sub" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=11;fontStyle=2;fontColor=#666666;" value="All Gold layer tables · Crow&#39;s foot notation · FK relationships shown" vertex="1">
+          <mxGeometry height="25" width="769" x="200" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="fact" parent="1" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;fillColor=#ffff88;strokeColor=#36393d;fontSize=13;" value="fact_sales" vertex="1">
+          <mxGeometry height="254" width="260" x="380" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="fhdr" parent="fact" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=0;top=0;left=0;right=0;bottom=1;" value="" vertex="1">
+          <mxGeometry height="8" width="260" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fr1" parent="fact" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;top=0;left=0;right=0;bottom=0;" value="PK" vertex="1">
+          <mxGeometry height="26" width="260" y="38" as="geometry" />
+        </mxCell>
+        <mxCell id="fr1a" parent="fr1" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;" value="sales_key" vertex="1">
+          <mxGeometry height="26" width="100" as="geometry">
+            <mxRectangle height="26" width="100" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fr1b" parent="fr1" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontSize=10;fontColor=#666666;" value="INT IDENTITY" vertex="1">
+          <mxGeometry height="26" width="160" x="100" as="geometry">
+            <mxRectangle height="26" width="160" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fr2" parent="fact" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;top=0;left=0;right=0;bottom=0;" value="FK" vertex="1">
+          <mxGeometry height="20" width="260" y="64" as="geometry" />
+        </mxCell>
+        <mxCell id="fr2a" parent="fr2" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;" value="customer_key" vertex="1">
+          <mxGeometry height="20" width="100" as="geometry">
+            <mxRectangle height="20" width="100" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fr2b" parent="fr2" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontSize=10;fontColor=#666666;" value="INT → dim_customer" vertex="1">
+          <mxGeometry height="20" width="160" x="100" as="geometry">
+            <mxRectangle height="20" width="160" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fr3" parent="fact" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;top=0;left=0;right=0;bottom=0;" value="FK" vertex="1">
+          <mxGeometry height="26" width="260" y="84" as="geometry" />
+        </mxCell>
+        <mxCell id="fr3a" parent="fr3" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;" value="product_key" vertex="1">
+          <mxGeometry height="26" width="100" as="geometry">
+            <mxRectangle height="26" width="100" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fr3b" parent="fr3" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontSize=10;fontColor=#666666;" value="INT → dim_product" vertex="1">
+          <mxGeometry height="26" width="160" x="100" as="geometry">
+            <mxRectangle height="26" width="160" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fr4" parent="fact" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;top=0;left=0;right=0;bottom=0;" value="FK" vertex="1">
+          <mxGeometry height="26" width="260" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="fr4a" parent="fr4" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;" value="date_key" vertex="1">
+          <mxGeometry height="26" width="100" as="geometry">
+            <mxRectangle height="26" width="100" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fr4b" parent="fr4" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontSize=10;fontColor=#666666;" value="INT → dim_date" vertex="1">
+          <mxGeometry height="26" width="160" x="100" as="geometry">
+            <mxRectangle height="26" width="160" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fr5" parent="fact" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;top=0;left=0;right=0;bottom=0;" value="FK" vertex="1">
+          <mxGeometry height="26" width="260" y="136" as="geometry" />
+        </mxCell>
+        <mxCell id="fr5a" parent="fr5" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;" value="location_key" vertex="1">
+          <mxGeometry height="26" width="100" as="geometry">
+            <mxRectangle height="26" width="100" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fr5b" parent="fr5" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontSize=10;fontColor=#666666;" value="INT → dim_location" vertex="1">
+          <mxGeometry height="26" width="160" x="100" as="geometry">
+            <mxRectangle height="26" width="160" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fr6" parent="fact" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;fontSize=11;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="26" width="260" y="162" as="geometry" />
+        </mxCell>
+        <mxCell id="fr6a" parent="fr6" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontSize=10;" value="order_qty, order_amount" vertex="1">
+          <mxGeometry height="26" width="260" as="geometry">
+            <mxRectangle height="26" width="260" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fr7" parent="fact" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;fontSize=11;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="26" width="260" y="188" as="geometry" />
+        </mxCell>
+        <mxCell id="fr7a" parent="fr7" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontSize=10;" value="refund_amount, gross_margin" vertex="1">
+          <mxGeometry height="26" width="260" as="geometry">
+            <mxRectangle height="26" width="260" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fr8" parent="fact" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;fontSize=11;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="26" width="260" y="214" as="geometry" />
+        </mxCell>
+        <mxCell id="fr8a" parent="fr8" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontSize=10;" value="cogs, returned_qty" vertex="1">
+          <mxGeometry height="26" width="260" as="geometry">
+            <mxRectangle height="26" width="260" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;fontStyle=1;align=left;spacingLeft=8;verticalAlign=top;spacingTop=5;" value="dim_customer&#xa;(SCD Type 2)&#xa;&#xa;PK customer_key INT&#xa;   customer_id VARCHAR&#xa;   full_name, email&#xa;   city, province, segment&#xa;   effective_date DATE&#xa;   expiry_date DATE&#xa;   is_current BIT" vertex="1">
+          <mxGeometry height="140" width="200" x="80" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="dp" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d6b656;fontSize=10;fontStyle=1;align=left;spacingLeft=8;verticalAlign=top;spacingTop=5;" value="dim_product&#xa;(SCD Type 2)&#xa;&#xa;PK product_key INT&#xa;   product_id VARCHAR&#xa;   product_name, category&#xa;   cost_price, list_price&#xa;   effective_date DATE&#xa;   expiry_date DATE&#xa;   is_current BIT" vertex="1">
+          <mxGeometry height="150" width="170" x="740" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="dd" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontStyle=1;align=left;spacingLeft=8;verticalAlign=top;spacingTop=5;" value="dim_date&#xa;&#xa;PK date_key INT (YYYYMMDD)&#xa;   full_date DATE&#xa;   day_name, month_name&#xa;   quarter_num, calendar_year&#xa;   is_weekend, is_holiday BIT&#xa;   holiday_name VARCHAR" vertex="1">
+          <mxGeometry height="120" width="220" x="80" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="dl" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;fontStyle=1;align=left;spacingLeft=8;verticalAlign=top;spacingTop=5;" value="dim_location&#xa;&#xa;PK location_key INT&#xa;   city VARCHAR&#xa;   province VARCHAR&#xa;   country VARCHAR&#xa;   region VARCHAR" vertex="1">
+          <mxGeometry height="120" width="160" x="760" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="rel1" edge="1" parent="1" style="edgeStyle=entityRelationEdgeStyle;endArrow=ERzeroToMany;startArrow=ERmandOne;strokeColor=#6c8ebf;strokeWidth=2;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="fr2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="279.9999999999998" y="230" as="sourcePoint" />
+            <mxPoint x="380" y="369" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel2" edge="1" parent="1" source="dp" style="edgeStyle=entityRelationEdgeStyle;endArrow=ERzeroToMany;startArrow=ERmandOne;strokeColor=#d6b656;strokeWidth=2;exitX=0.013;exitY=0.335;exitDx=0;exitDy=0;exitPerimeter=0;" target="fr3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel3" edge="1" parent="1" source="dd" style="edgeStyle=entityRelationEdgeStyle;endArrow=ERzeroToMany;startArrow=ERmandOne;strokeColor=#82b366;strokeWidth=2;exitX=1.012;exitY=0.322;exitDx=0;exitDy=0;exitPerimeter=0;" target="fr4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel4" edge="1" parent="1" source="dl" style="edgeStyle=entityRelationEdgeStyle;endArrow=ERzeroToMany;startArrow=ERmandOne;strokeColor=#9673a6;strokeWidth=2;exitX=0.004;exitY=0.367;exitDx=0;exitDy=0;exitPerimeter=0;" target="fr5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="leg" parent="1" style="text;html=1;strokeColor=none;fillColor=#fffbe6;align=left;fontSize=10;fontStyle=2;" value="One dimension row → Many fact rows&#xa;★ SCD Type 2 columns: effective_date · expiry_date · is_current" vertex="1">
+          <mxGeometry height="35" width="500" x="60" y="780" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
