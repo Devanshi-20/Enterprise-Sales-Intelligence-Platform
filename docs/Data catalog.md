@@ -1,6 +1,6 @@
 # Data Catalog — Bronze Layer (Updated v2.0)
 
-**Updated:** April 2026 — reflects actual source dataset structure after profiling
+**Updated:** April 2026 — reflects actual source dataset structure after profiling  
 **Change from v1.0:** All 6 Bronze tables rewritten to match real CSV files
 
 ---
