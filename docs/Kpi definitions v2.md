@@ -1,9 +1,10 @@
 # KPI Definitions
 
-**Project:** Enterprise Sales Intelligence Platform
-**Author:** Devanshi
-**Version:** 2.0 | **Updated:** April 2026
-**Change:** v2.0 — Updated to reflect actual source datasets
+**Project:** Enterprise Sales Intelligence Platform  
+**Author:** Devanshi  
+**Version:** 2.0  
+**Updated:** April 2026  
+**Change:** v2.0 — Updated to reflect actual source datasets  
 **Status:** Approved
 
 ---
