@@ -2,7 +2,7 @@
 
 **Project:** Enterprise Sales Intelligence Platform  
 **Author:** Devanshi  
-**Version:** 1.0  
+**Version:** 1.1    
 **Last updated:** April 2026  
 **Status:** Approved — applies to all layers, all contributors
 
