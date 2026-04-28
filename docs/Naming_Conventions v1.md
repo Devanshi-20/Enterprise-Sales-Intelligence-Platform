@@ -1,8 +1,9 @@
 # Naming Conventions
 
-**Project:** Enterprise Sales Intelligence Platform
-**Author:** Devanshi
-**Version:** 1.0 | **Last updated:** April 2026
+**Project:** Enterprise Sales Intelligence Platform  
+**Author:** Devanshi  
+**Version:** 1.0  
+**Last updated:** April 2026  
 **Status:** Approved — applies to all layers, all contributors
 
 ---
