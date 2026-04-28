@@ -74,11 +74,12 @@ Prefix: `bronze` schema + source system abbreviation + entity name
 
 | Pattern | Example |
 |---|---|
-| `bronze.[source]_[entity]` | `bronze.erp_orders` |
-| | `bronze.erp_order_items` |
-| | `bronze.erp_products` |
-| | `bronze.crm_customers` |
-| | `bronze.crm_contacts` |
+| `bronze.[source]_[entity]` | `bronze.crm_cust_info` |
+| | `bronze.crm_prd_info` |
+| | `bronze.crm_sales_details` |
+| | `bronze.erp_cust_az12` |
+| | `bronze.erp_loca101` |
+| | `bronze.erp_px_catg1v2` |
 
 Rules for Bronze:
 - Name must reflect the source system and entity exactly
@@ -91,10 +92,9 @@ Prefix: `stg_` + source system + entity name
 
 | Pattern | Example |
 |---|---|
-| `silver.stg_[source]_[entity]` | `silver.stg_erp_orders` |
-| | `silver.stg_erp_products` |
-| | `silver.stg_crm_customer` |
-| | `silver.stg_crm_contact` |
+| `silver.stg_[source]_[entity]` | `silver.stg_crm_cust_info` |
+| | `silver.stg_crm_sales` |
+| | `silver.stg_erp_demographics` |
 
 Rules for Silver:
 - Always prefix with `stg_` to signal this is a staging/cleansed model
@@ -536,6 +536,7 @@ PYTHON          snake_case variables and functions
 | Version | Date | Change | Author |
 |---|---|---|---|
 | 1.0 | April 2026 | Initial version — covers all layers, scripts, dbt, Python, GitHub | Devanshi |
+| 1.1 | April 2026 | Modified version — Replace details with actual datasets | Devanshi |
 
 ---
 
