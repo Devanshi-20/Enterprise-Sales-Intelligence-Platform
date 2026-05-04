@@ -1,11 +1,11 @@
 # Naming Conventions
 
-**Project:** Enterprise Sales Intelligence Platform
-**Author:** Devanshi
-**Version:** 2.0 | **Updated:** April 2026
+**Project:** Enterprise Sales Intelligence Platform  
+**Author:** Devanshi  
+**Version:** 2.0 | **Updated:** May 2026  
 **Change from v1.0:** Table names, column examples, and abbreviations updated
-to reflect actual source dataset files (CR-006)
-**Status:** Approved — applies to all layers, all contributors
+to reflect actual source dataset files (CR-006)  
+**Status:** Approved — applies to all layers, all contributors  
 
 ---
 
@@ -510,7 +510,7 @@ PYTHON            snake_case variables + functions
 | Version | Date | Change | Author |
 |---|---|---|---|
 | 1.0 | April 2026 | Initial version — assumed dataset structure | Devanshi |
-| 2.0 | April 2026 | Updated Bronze table names to actual source files. Added source-to-Silver column renaming table. Updated folder structure to reflect real dataset paths. Added source abbreviations (cst_, prd_, sls_) to approved list. (CR-006) | Devanshi |
+| 2.0 | May 2026 | Updated Bronze table names to actual source files. Added source-to-Silver column renaming table. Updated folder structure to reflect real dataset paths. Added source abbreviations (cst_, prd_, sls_) to approved list. (CR-006) | Devanshi |
 
 ---
 
