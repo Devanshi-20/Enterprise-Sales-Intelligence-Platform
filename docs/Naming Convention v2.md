@@ -2,7 +2,8 @@
 
 **Project:** Enterprise Sales Intelligence Platform  
 **Author:** Devanshi  
-**Version:** 2.0 | **Updated:** May 2026  
+**Version:** 2.0  
+**Updated:** May 2026  
 **Change from v1.0:** Table names, column examples, and abbreviations updated
 to reflect actual source dataset files (CR-006)  
 **Status:** Approved — applies to all layers, all contributors  
